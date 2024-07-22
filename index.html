@@ -1,0 +1,56 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número 23 en Movimiento</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .number {
+            position: absolute;
+            font-size: 10rem;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="number">23</div>
+
+    <script>
+        const number = document.querySelector('.number');
+        let x = window.innerWidth / 2;
+        let y = window.innerHeight / 2;
+        let dx = 2;
+        let dy = 2;
+
+        function animate() {
+            x += dx;
+            y += dy;
+
+            if (x + number.clientWidth >= window.innerWidth || x <= 0) {
+                dx *= -1;
+            }
+            if (y + number.clientHeight >= window.innerHeight || y <= 0) {
+                dy *= -1;
+            }
+
+            number.style.left = x + 'px';
+            number.style.top = y + 'px';
+
+            requestAnimationFrame(animate);
+        }
+
+        number.style.left = x + 'px';
+        number.style.top = y + 'px';
+        animate();
+    </script>
+</body>
+</html>
